@@ -8,6 +8,10 @@
 # shellcheck source=init/functions
 . /usr/lib/qubes/init/functions
 
+if [ -x /rw/config/rc.local-early ] ; then
+    /rw/config/rc.local-early
+fi
+
 # Set the hostname
 if ! is_protected_file /etc/hostname ; then
     name=$(qubesdb-read /name)
